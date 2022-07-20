@@ -17,3 +17,10 @@
   font-family: 'Pacifico', cursive;
   font-size: 50px;
 }
+
+.resy-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-column-gap: 1vw;
+  grid-row-gap: 4vh;
+}

@@ -1,0 +1,27 @@
+.reservation-card {
+  background-color: white;
+  width: 18vw;
+  height: 25vh;
+  font-size: .5rem;
+  text-align: center;
+  display:flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  border: 7px teal solid;
+  border-radius: 2%;
+  color: teal;
+}
+
+h1 {
+  margin: 2%;
+}
+
+button {
+  background-color: teal;
+  border: none;
+  width: 15vw;
+  padding: 3%;
+  color: white;
+}

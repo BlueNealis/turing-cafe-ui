@@ -16,7 +16,7 @@ class App extends Component {
     .then((data) => {
       let cards = []
       data.forEach((res) => {
-        cards.push(<ResCard info={res}/>)
+        cards.push(<ResCard info={res} key={res.id}/>)
       })
       this.setState({
         reservations: cards
