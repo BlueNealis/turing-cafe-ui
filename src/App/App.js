@@ -31,11 +31,17 @@ class App extends Component {
     .then((data) => {
       let cards = []
       data.forEach((res) => {
-        cards.push(<ResCard info={res} key={res.id}/>)
+        cards.push(<ResCard info={res} key={res.id} deleteReservation={this.deleteReservation}/>)
       })
       this.setState({
         reservations: cards
       })
+    })
+  }
+
+  deleteReservation = (resId) => {
+    fetch(`http://localhost:3001/api/v1/reservations/${resId}`, {
+      method: 'DELETE'
     })
   }
 
