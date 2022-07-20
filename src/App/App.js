@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import ResCard from '../Components/ResCard'
+import ReservationForm from '../Components/ReservationForm'
 
 class App extends Component {
   constructor() {
@@ -24,6 +25,10 @@ class App extends Component {
     })
   }
 
+  addReservation = (newRes) => {
+
+  }
+
 
   render() {
     return (
@@ -32,6 +37,7 @@ class App extends Component {
         <div className='resy-form'>
 
         </div>
+        <ReservationForm addReservation={this.addReservation} id={this.state.reservations.length+1}/>
         <div className='resy-container'>
           {this.state.reservations}
         </div>

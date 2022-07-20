@@ -25,3 +25,7 @@ button {
   padding: 3%;
   color: white;
 }
+
+button:hover {
+  cursor: pointer; 
+}
