@@ -33,4 +33,16 @@ describe('Form', () => {
         cy.get('button').click()
     })//iteration 2
   })
+
+  it('Should be able to delete a reservation', () => {
+    cy.get('form').within(() => {
+      cy.get('input').eq(0).type('Will')
+      cy.get('input').eq(1).type('11/20')
+      cy.get('input').eq(2).type('6:30')
+      cy.get('input').eq(3).type(2)
+      cy.get('button').click()
+    })
+    cy.get('.reservation-card').eq(-1).find('button').click()
+    cy.get('.reservation-card').eq(-1).contains('Ron')
+  })
 })
