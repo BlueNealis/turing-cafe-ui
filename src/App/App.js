@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import './App.css';
 import ResCard from '../Components/ResCard'
 import ReservationForm from '../Components/ReservationForm'
+import Menu from '../Components/Menu'
 
 class App extends Component {
   constructor() {
     super()
     this.state= {
       reservations: [],
+      menu: []
     }
   }
 
@@ -22,6 +24,11 @@ class App extends Component {
       this.setState({
         reservations: cards
       })
+    })
+    fetch('http://localhost:3001/api/v1/menu')
+    .then(response => response.json())
+    .then((data) => {
+      let menu = <Menu drinks={data.drinks} food={data.food}/>
     })
   }
 
@@ -55,15 +62,18 @@ body: JSON.stringify(newRes),
 })
   }
 
+showMenu() {
+
+}
 
   render() {
     return (
       <div className="App">
         <h1 className='app-title'>Turing Cafe Reservations</h1>
         <div className='resy-form'>
-
-        </div>
         <ReservationForm addReservation={this.addReservation} id={this.state.reservations.length+1}/>
+        </div>
+        <button onClick={this.showMenu}>Show Menu</button>
         <div className='resy-container'>
           {this.state.reservations}
         </div>
