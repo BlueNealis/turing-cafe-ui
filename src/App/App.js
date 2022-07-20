@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import ResCard from './Components/ResCard'
 
 class App extends Component {
   constructor() {
