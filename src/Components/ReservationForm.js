@@ -8,7 +8,7 @@ class ReservationForm extends Component {
       name: '',
       date: '',
       time:'',
-      number: null,
+      number: '',
       error: null
     }
   }
@@ -22,12 +22,18 @@ class ReservationForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
+    if(!this.state.name || !this.state.date || !this.state.time || !this.state.number) {
+      this.setState({
+        error: 'Please Fill Out All Fields'
+      })
+      return
+    }
     let newReservation = { id:this.state.id,
       name: this.state.name,
       date: this.state.date,
       time: this.state.time,
       number: this.state.number}
-      this.props.newReservation(newReservation);
+      this.props.addReservation(newReservation);
       this.resetForm()
   }
 
@@ -38,19 +44,23 @@ class ReservationForm extends Component {
       name: '',
       date: '',
       time: '',
-      number: null
+      number: '',
+      error:''
     })
   }
 
   render() {
     return (
-      <form onChange={this.handleChange}>
-        <input type='text' name='name' value={this.state.name} placeholder='name'></input>
-        <input type='text' name='date' value={this.state.date} placeholder='date mm/dd'></input>
-        <input type='text' name='time' value={this.state.time} placeholder='time'></input>
-        <input type='text' name='number' value={this.state.number} placeholder='number of guests'></input>
-        <button onClick={this.handleSubmit}>Make Reservation</button>
-      </form>
+      <div>
+        {this.state.error && <h1>{this.state.error}</h1>}
+        <form onChange={this.handleChange}>
+          <input onChange={this.handleChange} type='text' name='name' value={this.state.name} placeholder='name'></input>
+          <input onChange={this.handleChange} type='text' name='date' value={this.state.date} placeholder='date mm/dd'></input>
+          <input onChange={this.handleChange} type='text' name='time' value={this.state.time} placeholder='time'></input>
+          <input onChange={this.handleChange} type='text' name='number' value={this.state.number} placeholder='number of guests'></input>
+          <button onClick={this.handleSubmit}>Make Reservation</button>
+        </form>
+      </div>
     )
   }
 

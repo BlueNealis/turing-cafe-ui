@@ -25,8 +25,28 @@ class App extends Component {
     })
   }
 
-  addReservation = (newRes) => {
+  componentDidUpdate() {
+    fetch('http://localhost:3001/api/v1/reservations')
+    .then(response => response.json())
+    .then((data) => {
+      let cards = []
+      data.forEach((res) => {
+        cards.push(<ResCard info={res} key={res.id}/>)
+      })
+      this.setState({
+        reservations: cards
+      })
+    })
+  }
 
+  addReservation = (newRes) => {
+    fetch('http://localhost:3001/api/v1/reservations', {
+      method:'POST',
+      headers: {
+  'Content-Type': 'application/json',
+},
+body: JSON.stringify(newRes),
+})
   }
 
 
