@@ -7,5 +7,5 @@ describe('empty spec', () => {
   it('Should display all reservations', () => {
     cy.get('.reservation-card').eq(1).contains('Leta')
     cy.get('.reservation-card').should('have.length', 4)
-  })
+  })  //iteration 0
 })
