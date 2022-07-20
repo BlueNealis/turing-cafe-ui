@@ -1,26 +1,27 @@
 import React, { Component } from 'react';
 import './App.css';
-import ResCard from './Components/ResCard'
+import ResCard from '../Components/ResCard'
 
 class App extends Component {
   constructor() {
     super()
     this.state= {
       reservations: [],
-      cards:[]
     }
   }
 
   componentDidMount() {
     fetch('http://localhost:3001/api/v1/reservations')
-    .then(response => response.json)
-    .then(data => this.setState({
-      reservations: data
-    }))
-  }
-
-  createReservationCards = () => {
-
+    .then(response => response.json())
+    .then((data) => {
+      let cards = []
+      data.forEach((res) => {
+        cards.push(<ResCard info={res}/>)
+      })
+      this.setState({
+        reservations: cards
+      })
+    })
   }
 
 
@@ -32,6 +33,7 @@ class App extends Component {
 
         </div>
         <div className='resy-container'>
+          {this.state.reservations}
         </div>
       </div>
     )

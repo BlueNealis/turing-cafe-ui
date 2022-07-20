@@ -1,8 +1,11 @@
 import React from 'react'
 
-const Card = (props) => {
+const Card = ({info}) => {
+  const {id, name, date, time, number} = info
   return (
-    <div></div>
+    <div>
+      <h1>{name}</h1> 
+    </div>
   )
 }
 
